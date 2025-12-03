@@ -88,7 +88,9 @@ export function DemoConsole() {
     }, []);
 
     useEffect(() => {
-        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
     }, [visibleLogs]);
 
     const getLogIcon = (type: LogType) => {
@@ -186,6 +188,7 @@ export function DemoConsole() {
                                 {/* Logs Section */}
                                 <div className="md:col-span-2 border-r border-white/5 flex flex-col">
                                     <div
+                                        ref={scrollRef}
                                         className="flex-1 p-3 overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
                                     >
                                         <AnimatePresence mode='popLayout'>
@@ -208,7 +211,6 @@ export function DemoConsole() {
                                         {visibleLogs.length < initialLogs.length && (
                                             <div className="animate-pulse text-neon-cyan pl-[66px]">_</div>
                                         )}
-                                        <div ref={scrollRef} />
                                     </div>
                                 </div>
 
