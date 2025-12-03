@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-<<<<<<< HEAD
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,32 +17,15 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-=======
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "noEmit": true,
-    "incremental": true,
-    "module": "esnext",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
->>>>>>> 275f30c916b53c65ad06e561f948e73d373e6e29
     "plugins": [
       {
         "name": "next"
       }
-<<<<<<< HEAD
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
@@ -50,20 +36,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
-=======
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
   "exclude": [
     "node_modules"
   ]
->>>>>>> 275f30c916b53c65ad06e561f948e73d373e6e29
 }
