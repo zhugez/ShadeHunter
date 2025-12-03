@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
@@ -45,10 +46,60 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   min-height: 100vh;
+=======
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+    /* Colors */
+    --color-neon-cyan: #00E5FF;
+    --color-neon-indigo: #5F5CFF;
+    --color-neon-violet: #8A4FFF;
+
+    --color-status-safe: #00FF94;
+    --color-status-critical: #FF3366;
+
+    --color-deep-bg: #000000;
+    --color-deep-panel: #0A0E27;
+
+    /* Fonts */
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Animations */
+    --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-scanline: scanline 8s linear infinite;
+
+    @keyframes scanline {
+        0% {
+            transform: translateY(-100%);
+        }
+
+        100% {
+            transform: translateY(100%);
+        }
+    }
+}
+
+:root {
+    /* Keep these for any manual usage in JS or other CSS, 
+     though Tailwind utilities should be preferred */
+    --color-neon-cyan: #00E5FF;
+    --color-deep-bg: #000000;
+}
+
+body {
+    background-color: var(--color-deep-bg);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    min-height: 100vh;
+>>>>>>> 275f30c916b53c65ad06e561f948e73d373e6e29
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
+<<<<<<< HEAD
   width: 8px;
 }
 
@@ -63,10 +114,27 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+=======
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+>>>>>>> 275f30c916b53c65ad06e561f948e73d373e6e29
 }
 
 /* Utilities */
 .glass-panel {
+<<<<<<< HEAD
   background: rgba(10, 14, 39, 0.18);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -74,4 +142,13 @@ body {
 
 .text-glow {
   text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+=======
+    background: rgba(10, 14, 39, 0.18);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+>>>>>>> 275f30c916b53c65ad06e561f948e73d373e6e29
 }
