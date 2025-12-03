@@ -183,88 +183,91 @@ export function DemoConsole() {
                                 </div>
                             </div>
 
-                            {/* Main Console Area */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 h-[400px]">
-                                {/* Logs Section */}
-                                <div className="md:col-span-2 border-r border-white/5 flex flex-col h-full">
-                                    <div
-                                        ref={scrollRef}
-                                        className="flex-1 p-3 overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
-                                    >
-                                        <AnimatePresence mode='popLayout'>
-                                            {visibleLogs.map((log) => (
-                                                <motion.div
-                                                    key={log.id}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    exit={{ opacity: 0 }}
-                                                    className="flex gap-2.5 items-start group/log hover:bg-white/5 p-1 rounded transition-colors"
-                                                >
-                                                    <span className="text-gray-600 text-[10px] mt-0.5 min-w-[50px]">{log.timestamp}</span>
-                                                    <div className="mt-0.5">{getLogIcon(log.type)}</div>
-                                                    <span className={`text-xs md:text-sm ${getLogColor(log.type)} break-words flex-1 min-w-0`}>
-                                                        {log.msg}
-                                                    </span>
-                                                </motion.div>
-                                            ))}
-                                        </AnimatePresence>
-                                        {visibleLogs.length < initialLogs.length && (
-                                            <div className="animate-pulse text-neon-cyan pl-[66px]">_</div>
-                                        )}
+                            {/* Console Body */}
+                            <div className="flex flex-col h-[450px]">
+                                {/* Main Console Area */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 flex-1">
+                                    {/* Logs Section */}
+                                    <div className="md:col-span-2 border-r border-white/5 flex flex-col h-full">
+                                        <div
+                                            ref={scrollRef}
+                                            className="flex-1 p-3 overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+                                        >
+                                            <AnimatePresence mode='popLayout'>
+                                                {visibleLogs.map((log) => (
+                                                    <motion.div
+                                                        key={log.id}
+                                                        initial={{ opacity: 0, x: -10 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        exit={{ opacity: 0 }}
+                                                        className="flex gap-2.5 items-start group/log hover:bg-white/5 p-1 rounded transition-colors"
+                                                    >
+                                                        <span className="text-gray-600 text-[10px] mt-0.5 min-w-[50px]">{log.timestamp}</span>
+                                                        <div className="mt-0.5">{getLogIcon(log.type)}</div>
+                                                        <span className={`text-xs md:text-sm ${getLogColor(log.type)} break-words flex-1 min-w-0`}>
+                                                            {log.msg}
+                                                        </span>
+                                                    </motion.div>
+                                                ))}
+                                            </AnimatePresence>
+                                            {visibleLogs.length < initialLogs.length && (
+                                                <div className="animate-pulse text-neon-cyan pl-[66px]">_</div>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
 
-                                {/* Sidebar Stats */}
-                                <div className="hidden md:flex flex-col bg-white/[0.02]">
-                                    <div className="p-4 border-b border-white/5">
-                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">System Load</div>
-                                        <div className="space-y-3">
-                                            <div>
-                                                <div className="flex justify-between text-xs mb-1 text-gray-400">
-                                                    <span className="flex items-center gap-1"><Cpu size={10} /> CPU</span>
-                                                    <span>12%</span>
+                                    {/* Sidebar Stats */}
+                                    <div className="hidden md:flex flex-col bg-white/[0.02]">
+                                        <div className="p-4 border-b border-white/5">
+                                            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">System Load</div>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <div className="flex justify-between text-xs mb-1 text-gray-400">
+                                                        <span className="flex items-center gap-1"><Cpu size={10} /> CPU</span>
+                                                        <span>12%</span>
+                                                    </div>
+                                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                                        <div className="h-full bg-neon-cyan w-[12%] rounded-full" />
+                                                    </div>
                                                 </div>
-                                                <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                                                    <div className="h-full bg-neon-cyan w-[12%] rounded-full" />
+                                                <div>
+                                                    <div className="flex justify-between text-xs mb-1 text-gray-400">
+                                                        <span className="flex items-center gap-1"><Activity size={10} /> MEM</span>
+                                                        <span>45%</span>
+                                                    </div>
+                                                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                                                        <div className="h-full bg-neon-violet w-[45%] rounded-full" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="flex justify-between text-xs mb-1 text-gray-400">
-                                                    <span className="flex items-center gap-1"><Activity size={10} /> MEM</span>
-                                                    <span>45%</span>
-                                                </div>
-                                                <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-                                                    <div className="h-full bg-neon-violet w-[45%] rounded-full" />
-                                                </div>
+                                        </div>
+
+                                        <div className="p-4 border-b border-white/5">
+                                            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Network</div>
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <Wifi size={14} className="text-neon-cyan" />
+                                                <span className="text-lg font-bold text-white">1.2<span className="text-xs text-gray-500 ml-1">Gbps</span></span>
+                                            </div>
+                                            <div className="text-[10px] text-gray-500">Inbound Traffic</div>
+                                        </div>
+
+                                        <div className="p-4 flex-1">
+                                            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Packets Analyzed</div>
+                                            <div className="text-xl font-bold text-white font-mono">
+                                                {packetsAnalyzed.toLocaleString()}
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="p-4 border-b border-white/5">
-                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Network</div>
-                                        <div className="flex items-center gap-2 mb-1">
-                                            <Wifi size={14} className="text-neon-cyan" />
-                                            <span className="text-lg font-bold text-white">1.2<span className="text-xs text-gray-500 ml-1">Gbps</span></span>
-                                        </div>
-                                        <div className="text-[10px] text-gray-500">Inbound Traffic</div>
-                                    </div>
-
-                                    <div className="p-4 flex-1">
-                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Packets Analyzed</div>
-                                        <div className="text-xl font-bold text-white font-mono">
-                                            {packetsAnalyzed.toLocaleString()}
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
 
-                            {/* Footer Status */}
-                            <div className="px-4 py-2 bg-white/5 border-t border-white/5 flex items-center justify-between text-[10px] text-gray-500">
-                                <div className="flex items-center gap-2">
-                                    <div className={`w-2 h-2 rounded-full ${activeThreats > 0 ? 'bg-red-500 animate-pulse' : 'bg-green-500'}`} />
-                                    {activeThreats > 0 ? `${activeThreats} THREATS DETECTED` : 'SYSTEM SECURE'}
+                                {/* Footer Status */}
+                                <div className="px-4 py-2 bg-white/5 border-t border-white/5 flex items-center justify-between text-[10px] text-gray-500">
+                                    <div className="flex items-center gap-2">
+                                        <div className={`w-2 h-2 rounded-full ${activeThreats > 0 ? 'bg-red-500 animate-pulse' : 'bg-green-500'}`} />
+                                        {activeThreats > 0 ? `${activeThreats} THREATS DETECTED` : 'SYSTEM SECURE'}
+                                    </div>
+                                    <div>SH-CORE: ONLINE</div>
                                 </div>
-                                <div>SH-CORE: ONLINE</div>
                             </div>
                         </div>
                     </div>
