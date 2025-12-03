@@ -186,7 +186,7 @@ export function DemoConsole() {
                                 {/* Logs Section */}
                                 <div className="md:col-span-2 border-r border-white/5 flex flex-col">
                                     <div
-                                        className="flex-1 p-4 overflow-y-auto space-y-3 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+                                        className="flex-1 p-3 overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
                                     >
                                         <AnimatePresence mode='popLayout'>
                                             {visibleLogs.map((log) => (
@@ -195,7 +195,7 @@ export function DemoConsole() {
                                                     initial={{ opacity: 0, x: -10 }}
                                                     animate={{ opacity: 1, x: 0 }}
                                                     exit={{ opacity: 0 }}
-                                                    className="flex gap-3 items-start group/log hover:bg-white/5 p-1.5 rounded transition-colors"
+                                                    className="flex gap-2.5 items-start group/log hover:bg-white/5 p-1 rounded transition-colors"
                                                 >
                                                     <span className="text-gray-600 text-[10px] mt-0.5 min-w-[50px]">{log.timestamp}</span>
                                                     <div className="mt-0.5">{getLogIcon(log.type)}</div>
@@ -206,7 +206,7 @@ export function DemoConsole() {
                                             ))}
                                         </AnimatePresence>
                                         {visibleLogs.length < initialLogs.length && (
-                                            <div className="animate-pulse text-neon-cyan pl-[74px]">_</div>
+                                            <div className="animate-pulse text-neon-cyan pl-[66px]">_</div>
                                         )}
                                         <div ref={scrollRef} />
                                     </div>
