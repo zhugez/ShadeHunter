@@ -202,7 +202,7 @@ export function DemoConsole() {
                                                 >
                                                     <span className="text-gray-600 text-[10px] mt-0.5 min-w-[50px]">{log.timestamp}</span>
                                                     <div className="mt-0.5">{getLogIcon(log.type)}</div>
-                                                    <span className={`text-xs md:text-sm ${getLogColor(log.type)} break-words flex-1`}>
+                                                    <span className={`text-xs md:text-sm ${getLogColor(log.type)} break-words flex-1 min-w-0`}>
                                                         {log.msg}
                                                     </span>
                                                 </motion.div>
