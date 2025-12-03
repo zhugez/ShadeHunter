@@ -1,20 +1,21 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-interface ButtonProps {
+type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+
+interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
     children: React.ReactNode;
-    className?: string;
-    variant?: 'primary' | 'secondary' | 'ghost';
+    variant?: ButtonVariant;
 }
 
-export function Button({ children, className, variant = 'primary', ...props }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export function Button({ children, className, variant = 'primary', ...props }: ButtonProps) {
     const baseStyles = "relative px-6 py-3 font-mono font-bold uppercase tracking-wider transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black";
 
-    const variants = {
+    const variants: Record<ButtonVariant, string> = {
         primary: "border-neon-cyan text-neon-cyan hover:bg-neon-cyan/10 hover:shadow-[0_0_20px_rgba(0,229,255,0.5)] focus:ring-neon-cyan",
         secondary: "border-neon-indigo text-neon-indigo hover:bg-neon-indigo/10 hover:shadow-[0_0_20px_rgba(95,92,255,0.5)] focus:ring-neon-indigo",
         ghost: "border-transparent text-gray-400 hover:text-white hover:bg-white/5",

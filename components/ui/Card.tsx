@@ -1,15 +1,14 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
-interface CardProps {
+interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
     children: React.ReactNode;
-    className?: string;
 }
 
-export function Card({ children, className, ...props }: CardProps & React.HTMLAttributes<HTMLDivElement>) {
+export function Card({ children, className, ...props }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
