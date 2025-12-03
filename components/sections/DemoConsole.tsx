@@ -186,7 +186,7 @@ export function DemoConsole() {
                             {/* Main Console Area */}
                             <div className="grid grid-cols-1 md:grid-cols-3 h-[400px]">
                                 {/* Logs Section */}
-                                <div className="md:col-span-2 border-r border-white/5 flex flex-col">
+                                <div className="md:col-span-2 border-r border-white/5 flex flex-col h-full">
                                     <div
                                         ref={scrollRef}
                                         className="flex-1 p-3 overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
